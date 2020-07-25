@@ -12,9 +12,10 @@ const MAPBOX_TOKEN = process.env.MapboxAccessToken; // eslint-disable-line
 
 // Source data CSV
 const DATA_URL = {
-  BUILDINGS:
-    'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/buildings.json', // eslint-disable-line
-  TRIPS: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/trips-v7.json' // eslint-disable-line
+  //BUILDINGS:
+  //  'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/buildings.json', // eslint-disable-line
+  //TRIPS: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/trips-v7.json' // eslint-disable-line
+  TRIPS: 'https://raw.githubusercontent.com/ebaustria/coord_conversion/master/one_trace_brazil.json'
 };
 
 const ambientLight = new AmbientLight({
@@ -46,8 +47,8 @@ const DEFAULT_THEME = {
 };
 
 const INITIAL_VIEW_STATE = {
-  longitude: -74,
-  latitude: 40.72,
+  longitude: -52.789164,
+  latitude: -31.832282,
   zoom: 13,
   pitch: 45,
   bearing: 0
@@ -62,7 +63,7 @@ export default function App({
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = 'mapbox://styles/mapbox/dark-v9',
   theme = DEFAULT_THEME,
-  loopLength = 1800, // unit corresponds to the timestamp in source data
+  loopLength = 90000, // unit corresponds to the timestamp in source data
   animationSpeed = 1
 }) {
   const [time, setTime] = useState(0);
