@@ -63,7 +63,7 @@ export default function App({
   mapStyle = 'mapbox://styles/mapbox/dark-v9',
   theme = DEFAULT_THEME,
   loopLength = 604800, // unit corresponds to the timestamp in source data
-  animationSpeed = 10
+  animationSpeed = 5
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState({});
@@ -101,7 +101,7 @@ export default function App({
       rounded: true,
       trailLength,
       currentTime: time,
-
+      getWidth: 3,
       shadowEnabled: false
     }),
     new PolygonLayer({
@@ -132,6 +132,13 @@ export default function App({
       />
     </DeckGL>
   );
+}
+
+function isVisible(timestamp, current, tolerance, size) {
+  if (timestamp <= (current + tolerance) && timestamp >= current) {
+    return size;
+  }
+  return 0;
 }
 
 export function renderToDOM(container) {
