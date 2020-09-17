@@ -15,7 +15,6 @@ const DATA_URL = {
   //BUILDINGS:
   //  'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/buildings.json', // eslint-disable-line
   //TRIPS: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/trips-v7.json' // eslint-disable-line
-  TRIPS: 'https://raw.githubusercontent.com/ebaustria/coord_conversion/master/one_trace_brazil.json'
 };
 
 const ambientLight = new AmbientLight({
@@ -49,7 +48,7 @@ const DEFAULT_THEME = {
 const INITIAL_VIEW_STATE = {
   longitude: -52.789164,
   latitude: -31.832282,
-  zoom: 13,
+  zoom: 9,
   pitch: 45,
   bearing: 0
 };
@@ -59,12 +58,12 @@ const landCover = [[[-74.0, 40.7], [-74.02, 40.7], [-74.02, 40.72], [-74.0, 40.7
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 180,
+  trailLength = 720,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = 'mapbox://styles/mapbox/dark-v9',
   theme = DEFAULT_THEME,
-  loopLength = 90000, // unit corresponds to the timestamp in source data
-  animationSpeed = 1
+  loopLength = 604800, // unit corresponds to the timestamp in source data
+  animationSpeed = 10
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState({});
@@ -96,9 +95,9 @@ export default function App({
       data: trips,
       getPath: d => d.path,
       getTimestamps: d => d.timestamps,
-      getColor: d => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
-      opacity: 0.3,
-      widthMinPixels: 2,
+      getColor: [253, 128, 93],
+      opacity: 1,
+      widthMinPixels: 3,
       rounded: true,
       trailLength,
       currentTime: time,
