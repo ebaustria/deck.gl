@@ -63,7 +63,7 @@ export default function App({
   mapStyle = 'mapbox://styles/mapbox/dark-v9',
   theme = DEFAULT_THEME,
   loopLength = 604800, // unit corresponds to the timestamp in source data
-  animationSpeed = 5
+  animationSpeed = 10
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState({});
